@@ -1,10 +1,10 @@
-CREATE DATABASE  IF NOT EXISTS `mm_cpsc5910team01` /*!40100 DEFAULT CHARACTER SET utf8 */ /*!80016 DEFAULT ENCRYPTION='N' */;
+CREATE DATABASE  IF NOT EXISTS `mm_cpsc5910team01` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `mm_cpsc5910team01`;
 -- MySQL dump 10.13  Distrib 8.0.15, for macos10.14 (x86_64)
 --
--- Host: cs100.seattleu.edu    Database: mm_cpsc5910team01
+-- Host: 127.0.0.1    Database: mm_cpsc5910team01
 -- ------------------------------------------------------
--- Server version	8.0.18
+-- Server version	8.0.15
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -59,7 +59,7 @@ CREATE TABLE `Contractor` (
   PRIMARY KEY (`contractor_id`),
   UNIQUE KEY `contractor_id_UNIQUE` (`contractor_id`),
   KEY `fk_ServiceEmployee_ServiceEmployee1_idx` (`reports_to`),
-  CONSTRAINT `contractor_id` FOREIGN KEY (`reports_to`) REFERENCES `Contractor` (`contractor_id`)
+  CONSTRAINT `contractor_id` FOREIGN KEY (`reports_to`) REFERENCES `contractor` (`contractor_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -89,7 +89,7 @@ CREATE TABLE `Customer` (
   `location_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`customer_id`),
   KEY `location_id_idx` (`location_id`),
-  CONSTRAINT `location_id` FOREIGN KEY (`location_id`) REFERENCES `Location` (`location_id`)
+  CONSTRAINT `location_id` FOREIGN KEY (`location_id`) REFERENCES `location` (`location_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -121,8 +121,8 @@ CREATE TABLE `FutureSchedule` (
   PRIMARY KEY (`schedule_id`),
   KEY `fk_FutureSchedule_Contractor1_idx` (`contractor_id`),
   KEY `fk_FutureSchedule_Customer1_idx` (`customer_id`),
-  CONSTRAINT `fk_FutureSchedule_Contractor1` FOREIGN KEY (`contractor_id`) REFERENCES `Contractor` (`contractor_id`),
-  CONSTRAINT `fk_FutureSchedule_Customer1` FOREIGN KEY (`customer_id`) REFERENCES `Customer` (`customer_id`)
+  CONSTRAINT `fk_FutureSchedule_Contractor1` FOREIGN KEY (`contractor_id`) REFERENCES `contractor` (`contractor_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `fk_FutureSchedule_Customer1` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -180,7 +180,7 @@ CREATE TABLE `PastService` (
   `payment_id` int(11) NOT NULL,
   PRIMARY KEY (`service_id`),
   KEY `fk_ServiceOrder_Payment1_idx` (`payment_id`),
-  CONSTRAINT `fk_ServiceOrder_Payment1` FOREIGN KEY (`payment_id`) REFERENCES `Payment` (`payment_id`)
+  CONSTRAINT `fk_ServiceOrder_Payment1` FOREIGN KEY (`payment_id`) REFERENCES `payment` (`payment_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -209,7 +209,7 @@ CREATE TABLE `Payment` (
   PRIMARY KEY (`payment_id`),
   UNIQUE KEY `payment_id_UNIQUE` (`payment_id`),
   KEY `fk_payment_customer1_idx` (`customer_id`),
-  CONSTRAINT `fk_payment_customer1` FOREIGN KEY (`customer_id`) REFERENCES `Customer` (`customer_id`)
+  CONSTRAINT `fk_payment_customer1` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -219,7 +219,7 @@ CREATE TABLE `Payment` (
 
 LOCK TABLES `Payment` WRITE;
 /*!40000 ALTER TABLE `Payment` DISABLE KEYS */;
-INSERT INTO `Payment` VALUES (1,654.80,'2019-12-28 06:53:19',1),(2,358.70,'2019-12-26 21:28:32',2),(3,2548.00,'2019-12-31 10:53:57',3),(4,3684.50,'2019-12-21 18:50:38',4),(5,3973.70,'2019-12-26 11:22:21',5),(6,4915.00,'2019-12-09 01:23:38',6),(7,639.50,'2019-11-28 07:35:36',7),(8,953.00,'2019-12-06 00:47:07',8),(9,7781.00,'2020-01-11 16:50:36',9),(10,708.00,'2019-12-07 21:01:49',10),(11,1647.00,'2020-01-11 07:53:58',11),(12,1608.00,'2019-12-25 04:01:12',12),(13,52.99,'2020-01-22 18:33:35',12),(14,52.99,'2020-02-04 06:40:02',8),(15,39.54,'2019-12-31 23:00:01',2),(16,39.54,'2019-12-08 12:13:01',9),(17,39.54,'2020-01-23 08:13:01',9);
+INSERT INTO `Payment` VALUES (1,654.80,'2019-12-28 06:53:19',1),(2,358.70,'2019-12-26 21:28:32',2),(3,2548.00,'2019-12-31 10:53:57',3),(4,3684.50,'2019-12-21 18:50:38',4),(5,3973.70,'2019-12-26 11:22:21',5),(6,4915.00,'2019-12-09 01:23:38',6),(7,639.50,'2019-11-28 07:35:36',7),(8,953.00,'2019-12-06 00:47:07',8),(9,7781.00,'2020-01-11 16:50:36',9),(10,708.00,'2019-12-07 21:01:49',10),(11,1647.00,'2020-01-11 07:53:58',11),(12,1608.00,'2019-12-25 04:01:12',12),(13,52.99,'2020-01-22 18:33:35',12),(14,32.95,'2020-02-04 06:40:02',8),(15,39.54,'2019-12-31 23:00:01',2),(16,28.14,'2019-12-08 12:13:01',9),(17,50.00,'2020-01-23 08:13:01',9);
 /*!40000 ALTER TABLE `Payment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -240,7 +240,7 @@ CREATE TABLE `Product` (
   PRIMARY KEY (`product_id`),
   UNIQUE KEY `product_id_UNIQUE` (`product_id`),
   KEY `fk_product_Category1_idx` (`category_id`),
-  CONSTRAINT `fk_product_Category1` FOREIGN KEY (`category_id`) REFERENCES `Category` (`category_id`)
+  CONSTRAINT `fk_product_Category1` FOREIGN KEY (`category_id`) REFERENCES `category` (`category_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -267,7 +267,7 @@ CREATE TABLE `PurchaseOrder` (
   `supplier_id` int(11) NOT NULL,
   PRIMARY KEY (`purchase_order_id`),
   KEY `fk_PurchaseOrder_Supplier1_idx` (`supplier_id`),
-  CONSTRAINT `fk_PurchaseOrder_Supplier1` FOREIGN KEY (`supplier_id`) REFERENCES `Supplier` (`supplier_id`)
+  CONSTRAINT `fk_PurchaseOrder_Supplier1` FOREIGN KEY (`supplier_id`) REFERENCES `supplier` (`supplier_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -296,8 +296,8 @@ CREATE TABLE `PurchaseOrderDetail` (
   PRIMARY KEY (`product_id`,`purchase_order_id`),
   KEY `fk_SupplyDetail_Product1_idx` (`product_id`),
   KEY `fk_PurchaseOrderDetail_PurchaseOrder1_idx` (`purchase_order_id`),
-  CONSTRAINT `fk_PurchaseOrderDetail_PurchaseOrder1` FOREIGN KEY (`purchase_order_id`) REFERENCES `PurchaseOrder` (`purchase_order_id`),
-  CONSTRAINT `fk_SupplyDetail_Product1` FOREIGN KEY (`product_id`) REFERENCES `Product` (`product_id`)
+  CONSTRAINT `fk_PurchaseOrderDetail_PurchaseOrder1` FOREIGN KEY (`purchase_order_id`) REFERENCES `purchaseorder` (`purchase_order_id`),
+  CONSTRAINT `fk_SupplyDetail_Product1` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -327,11 +327,11 @@ CREATE TABLE `SalesEmployee` (
   `store_code` int(11) NOT NULL,
   `reports_to` int(11) DEFAULT NULL,
   PRIMARY KEY (`employee_id`),
-  UNIQUE KEY `employee_id` (`employee_id`),
-  KEY `reports_to` (`reports_to`),
-  KEY `store_code` (`store_code`),
-  CONSTRAINT `reports_to` FOREIGN KEY (`reports_to`) REFERENCES `SalesEmployee` (`employee_id`),
-  CONSTRAINT `store_code` FOREIGN KEY (`store_code`) REFERENCES `Store` (`store_code`)
+  UNIQUE KEY `employee_id_UNIQUE` (`employee_id`),
+  KEY `fk_employee_office1_idx` (`store_code`),
+  KEY `fk_SalesEmployee_SalesEmployee1_idx` (`reports_to`),
+  CONSTRAINT `reports_to` FOREIGN KEY (`reports_to`) REFERENCES `salesemployee` (`employee_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `store_code` FOREIGN KEY (`store_code`) REFERENCES `store` (`store_code`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -362,9 +362,9 @@ CREATE TABLE `SalesOrder` (
   KEY `fk_order_customer1_idx` (`customer_id`),
   KEY `fk_order_employee1_idx` (`employee_id`),
   KEY `fk_order_payment1_idx` (`payment_id`),
-  CONSTRAINT `fk_order_customer1` FOREIGN KEY (`customer_id`) REFERENCES `Customer` (`customer_id`),
-  CONSTRAINT `fk_order_employee1` FOREIGN KEY (`employee_id`) REFERENCES `SalesEmployee` (`employee_id`),
-  CONSTRAINT `fk_order_payment1` FOREIGN KEY (`payment_id`) REFERENCES `Payment` (`payment_id`)
+  CONSTRAINT `fk_order_customer1` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `fk_order_employee1` FOREIGN KEY (`employee_id`) REFERENCES `salesemployee` (`employee_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `fk_order_payment1` FOREIGN KEY (`payment_id`) REFERENCES `payment` (`payment_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -391,8 +391,8 @@ CREATE TABLE `SalesOrderDetail` (
   `quantity` int(11) DEFAULT NULL,
   PRIMARY KEY (`product_id`,`order_id`),
   KEY `fk_OrderDetail_order1_idx` (`order_id`),
-  CONSTRAINT `fk_OrderDetail_order1` FOREIGN KEY (`order_id`) REFERENCES `SalesOrder` (`order_id`),
-  CONSTRAINT `fk_OrderDetail_product1` FOREIGN KEY (`product_id`) REFERENCES `Product` (`product_id`)
+  CONSTRAINT `fk_OrderDetail_order1` FOREIGN KEY (`order_id`) REFERENCES `salesorder` (`order_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `fk_OrderDetail_product1` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -402,7 +402,7 @@ CREATE TABLE `SalesOrderDetail` (
 
 LOCK TABLES `SalesOrderDetail` WRITE;
 /*!40000 ALTER TABLE `SalesOrderDetail` DISABLE KEYS */;
-INSERT INTO `SalesOrderDetail` VALUES (1,1,1),(1,2,1),(3,3,1),(3,4,1),(3,5,1);
+INSERT INTO `SalesOrderDetail` VALUES (1,1,1),(2,2,1),(3,3,1),(4,4,1),(6,5,2);
 /*!40000 ALTER TABLE `SalesOrderDetail` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -419,7 +419,7 @@ CREATE TABLE `Store` (
   `location_id` int(11) NOT NULL,
   PRIMARY KEY (`store_code`),
   KEY `fk_Store_Address1_idx` (`location_id`),
-  CONSTRAINT `fk_Store_Address1` FOREIGN KEY (`location_id`) REFERENCES `Location` (`location_id`)
+  CONSTRAINT `fk_Store_Address1` FOREIGN KEY (`location_id`) REFERENCES `location` (`location_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -448,7 +448,7 @@ CREATE TABLE `Supplier` (
   PRIMARY KEY (`supplier_id`),
   UNIQUE KEY `manufacturer_id_UNIQUE` (`supplier_id`),
   KEY `fk_Supplier_Address1_idx` (`location_id`),
-  CONSTRAINT `fk_Supplier_Address1` FOREIGN KEY (`location_id`) REFERENCES `Location` (`location_id`)
+  CONSTRAINT `fk_Supplier_Address1` FOREIGN KEY (`location_id`) REFERENCES `location` (`location_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -483,7 +483,7 @@ CREATE TABLE `SwimmingPool` (
   `customer_id` int(11) NOT NULL,
   PRIMARY KEY (`swimming_pool_id`),
   KEY `fk_SwimmingPool_Customer1_idx` (`customer_id`),
-  CONSTRAINT `fk_SwimmingPool_Customer1` FOREIGN KEY (`customer_id`) REFERENCES `Customer` (`customer_id`)
+  CONSTRAINT `fk_SwimmingPool_Customer1` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -506,4 +506,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-03-02 16:10:36
+-- Dump completed on 2020-03-14 22:22:26
