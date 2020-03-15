@@ -1,0 +1,13 @@
+"swimming_pool_id","size","type","manufacturer","diving_board","year_build","pump_type","filter_type","heater_or_spa","other_description","customer_id"
+1,"16x32","vinyl","Pentair","no","2010","superflo vs","Hayward S244T","heater","rectangle",1
+2,"16x32","vinyl","Pentair","no","2017","superflo","Hayward swimclear","spa","rectangle",2
+3,"20x40","vinyl","Hayward","yes","2011","maxflo","Intex 3000","none","kidney",3
+4,"18x36","vinyl","Pentair","no","2008","superflo","Hayward S244T","none","rectangle",4
+5,"18x36","vinyl","Hayward","yes","2009","tristar vs","Hayward S244T","spa","rectangle",5
+6,"16x32","vinyl","Hayward","no","2005","super pump vs","Intex 3000","none","rectangle",6
+7,"16x32","vinyl","Hayward","no","2006","super pump","Hayward S244T","spa","rectangle",7
+8,"16x32","vinyl","Waterway","no","2001","champion v6","Hayward swimclear","none","rectangle",8
+9,"18x36","gunite","Pentair","yes","2015","superflo vs","Hayward proseries 24","heater","rectangle",9
+10,"20x40","gunite","Hayward","yes","2019","ecto variable speed","Hayward swimclear multi","both","freeform",10
+11,"12x24","fiberglass","Hayward","no","2005","maxflo vs","Hayward starclear","heater","freeform",11
+12,"12x25","fiberglass","Pentair","no","2011","superflo vs","Hayward 20","heater","freeform",12

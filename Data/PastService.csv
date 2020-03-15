@@ -1,0 +1,14 @@
+"service_id","order_date","service_date","lasting_time","contractor_id","service_description","payment_id"
+1,"2019-11-08 03:10:31","2020-02-02 20:40:22",4.0,1,"diving board change",1
+2,"2019-11-03 21:07:28","2020-02-07 18:35:43",4.0,2,"diving board change",2
+3,"2019-11-23 11:03:05","2020-02-12 19:42:38",4.0,3,"diving board change",3
+4,"2019-11-03 00:07:32","2020-02-11 08:21:47",2.0,4,"pump and filter maintenance",4
+5,"2019-11-03 08:26:10","2020-02-13 06:32:54",3.0,5,"pump and filter maintenance",5
+6,"2019-11-22 16:57:21","2020-02-06 14:47:15",4.0,6,"pump and filter maintenance",6
+7,"2019-11-08 19:54:24","2020-02-04 07:10:55",4.0,7,"pump and filter maintenance",7
+8,"2019-11-08 01:42:55","2020-02-14 08:31:17",1.0,8,"pump and filter maintenance",8
+9,"2019-11-23 05:05:35","2020-02-02 15:06:40",4.0,9,"heater maintenance",9
+10,"2019-11-04 03:06:45","2020-02-08 07:51:59",1.0,10,"heater maintenance",10
+11,"2019-11-12 10:57:26","2020-02-02 02:55:18",3.0,11,"heater maintenance",11
+12,"2019-11-16 22:17:16","2020-02-03 07:01:08",3.0,12,"filter maintenance",12
+13,"2020-01-21 15:23:19","2020-01-27 09:52:43",2.0,11,"filter maintenance",13

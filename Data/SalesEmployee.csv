@@ -1,0 +1,7 @@
+"employee_id","first_name","last_name","position","email","store_code","reports_to"
+1,"Gail "," Draughn","Manager","GailSDraughn@jourrapide.com",1,0
+2,"Janet ","Levy","Manager","JanetSLevy@jourrapide.com",2,0
+3,"Cheryl ","Evans","Sales Clerk","CherylAEvans@teleworm.us",1,1
+4,"Danelle ","Hering","Sales Clerk","DanelleBHering@rhyta.com",1,1
+5,"Claude ","Marshall","Sales Clerk","ClaudeJMarshall@rhyta.com",2,1
+6,"Nancy ","Brunton","Sales Clerk","NancyABrunton@rhyta.com",2,2
