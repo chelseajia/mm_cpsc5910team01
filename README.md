@@ -23,5 +23,7 @@ Our mission is to make the management of a seasonal business smoother for a fami
 ### File
 1. [model_diagram.png](https://github.com/chelseajia/mm_cpsc5910team01/blob/master/model_diagram.png)
     - Diagram of Final physical model
+2. [queries_stored_procedures.sql](https://github.com/chelseajia/mm_cpsc5910team01/blob/master/queries_stored_procedures.sql)
+    - Relevant SQL queries and stored procedures
 ### Tableau Public
 All tableau graphs for this project can be accessed [here](https://public.tableau.com/profile/chelseajia#!/)
